@@ -1,18 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import {useEffect, useState} from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a>Hello React!</a>
-      </header>
-    </div>
-  );
+function Counter() {
+    const [count, setCount] = useState(0);
+
+    // 랜더링이 끝나면 매번 호출됨
+    useEffect(() => {
+        console.log("Hello from useEffect")
+    });
+
+    return (
+        <div>
+            <p>{count}</p>
+            <button onClick={() => setCount(count + 10)}>
+                + 10
+            </button>
+            <button onClick={() => setCount(count + 1)}>
+                + 1
+            </button>
+            <button onClick={() => setCount(0)}>
+                reset
+            </button>
+            <button onClick={() => setCount(count - 1)}>
+                - 1
+            </button>
+            <button onClick={() => setCount(count - 10)}>
+                - 10
+            </button>
+        </div>
+    );
 }
 
-export default App;
+export default Counter;
